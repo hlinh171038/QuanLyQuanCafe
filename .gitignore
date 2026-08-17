@@ -1,0 +1,24 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.cache
+
+# NuGet
+packages/
+*.nupkg
+
+# Local config chứa mật khẩu — KHÔNG push
+App.local.config
+appsettings.Development.json
+
+# Khác
+*.log
+Thumbs.db
