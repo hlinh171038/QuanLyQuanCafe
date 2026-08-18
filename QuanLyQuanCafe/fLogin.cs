@@ -24,7 +24,10 @@ namespace QuanLyQuanCafe
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            fMain f = new fMain();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
         }
 
 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyQuanCafe
 {
-    public partial class Main : Form
+    public partial class fMain : Form
     {
-        public Main()
+        public fMain()
         {
             InitializeComponent();
         }
