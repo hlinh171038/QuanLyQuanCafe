@@ -13,7 +13,7 @@ namespace QuanLyQuanCafe.DAO
        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QuanlyQuanCafe;Integrated Security=True;Encrypt=False";
 
 
-        public DataTable ExecuteQuery(string query , string id)
+        public DataTable ExecuteQuery(string query , object[] paramater = null )
         {
             DataTable data = new DataTable();
             // 1. connection to database
@@ -21,7 +21,21 @@ namespace QuanLyQuanCafe.DAO
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@userName", id);
+
+                if (paramater != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach ( string para in listPara)
+                    {
+                        if(para.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(para, paramater[i]);
+                            i++;
+                        }
+                    }
+                }                   
+                
                 
                 SqlDataAdapter adapter = new SqlDataAdapter(command); //this is the line where everything happens. The query is sent, SQL Server executes it, rows come back, and data gets filled. Every line before this was just preparation.
                 adapter.Fill(data);
