@@ -33,5 +33,11 @@ namespace QuanLyQuanCafe
             fAccount f = new fAccount();
             f.ShowDialog();
         }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAdmin f = new fAdmin();
+            f.ShowDialog();
+        }
     }
 }
