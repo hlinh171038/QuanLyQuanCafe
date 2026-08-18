@@ -16,5 +16,22 @@ namespace QuanLyQuanCafe
         {
             InitializeComponent();
         }
+
+        private void mnDiscount_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void personalInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAccount f = new fAccount();
+            f.ShowDialog();
+        }
     }
 }
