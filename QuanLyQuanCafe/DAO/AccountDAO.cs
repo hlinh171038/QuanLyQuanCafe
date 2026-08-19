@@ -21,9 +21,9 @@ namespace QuanLyQuanCafe.DAO
 
         public bool Login(string username, string password)
         {
-            string query = "SELECT * FROM dbo.Account WHERE Username = N'"+username+"' AND Password = N'"+password+"'";
+            string query = "EXEC dbo.USP_Login @username , @password ";
 
-            DataTable result = dataProvider.Instance.ExecuteQuery(query);
+            DataTable result = dataProvider.Instance.ExecuteQuery(query, new object[] { username, password });
 
             return result.Rows.Count > 0;
             
