@@ -58,6 +58,7 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\dataProvider.cs" />
     <Compile Include="fLogin.cs">
       <SubType>Form</SubType>

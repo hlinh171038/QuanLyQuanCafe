@@ -55,6 +55,71 @@ namespace QuanLyQuanCafe.DAO
 
             return data;
         }
-        
+        // reeturn the number of rows affected by the query
+        public int ExecuteNonQuery(string query, object[] paramater = null)
+        {
+            int data = 0;
+            // 1. connection to database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (paramater != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string para in listPara)
+                    {
+                        if (para.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(para, paramater[i]);
+                            i++;
+                        }
+                    }
+                }
+                data = command.ExecuteNonQuery();    
+                connection.Close();
+            }
+
+
+
+            return data;
+        }
+        //count the number of rows returned by the query
+        public object ExecuteScalar(string query, object[] paramater = null)
+        {
+            object data = 0;
+            // 1. connection to database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (paramater != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string para in listPara)
+                    {
+                        if (para.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(para, paramater[i]);
+                            i++;
+                        }
+                    }
+                }
+
+
+                data = command.ExecuteScalar();
+
+                connection.Close();
+            }
+
+
+
+            return data;
+        }
+
     }
 }

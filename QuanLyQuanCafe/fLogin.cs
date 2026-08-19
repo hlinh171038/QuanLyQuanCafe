@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyQuanCafe.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,26 @@ namespace QuanLyQuanCafe
 
         }
 
+        bool login(string username, string password)
+        {
+            return AccountDAO.Instance.Login(username,password);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            fMain f = new fMain();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            string username = tbxUsername.Text;
+            string password = tbxPassword.Text;
+
+            if (login(username,password))
+            {
+                fMain f = new fMain();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }else
+            {
+                MessageBox.Show("Username or password is incorrect. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
 
