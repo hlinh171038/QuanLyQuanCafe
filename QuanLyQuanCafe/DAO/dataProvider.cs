@@ -10,8 +10,16 @@ namespace QuanLyQuanCafe.DAO
 {
     internal class dataProvider
     {
-       private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QuanlyQuanCafe;Integrated Security=True;Encrypt=False";
+        private static dataProvider instance; // Singleton pattern ( Ctr + R + E ) to create a single instance of the class and use it throughout the application.
+        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QuanlyQuanCafe;Integrated Security=True;Encrypt=False";
 
+        internal static dataProvider Instance 
+        { 
+            get {  if (instance == null) instance = new dataProvider(); return dataProvider.instance; }
+            private set { dataProvider.instance = value; } 
+        }
+
+        private dataProvider() { } // private constructor to prevent instantiation from outside the class
 
         public DataTable ExecuteQuery(string query , object[] paramater = null )
         {

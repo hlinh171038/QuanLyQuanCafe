@@ -23,8 +23,7 @@ namespace QuanLyQuanCafe
         void LoadAccountList()
         {
             string query = "EXEC dbo.USP_GetAccountByUserName @userName ";
-            dataProvider provider = new dataProvider();
-            dgvAccount.DataSource = provider.ExecuteQuery(query, new object[] {"K9"});
+            dgvAccount.DataSource = dataProvider.Instance.ExecuteQuery(query, new object[] {"K9"});
         }
 
         private void button1_Click(object sender, EventArgs e)
