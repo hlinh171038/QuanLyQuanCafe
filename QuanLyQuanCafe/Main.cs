@@ -28,6 +28,9 @@ namespace QuanLyQuanCafe
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height =TableDAO.TableHeight };
                 btn.Text = item.Name +Environment.NewLine + item.Status;
+                btn.Click += btnTable_Click;
+                // tag để lưu thông tin bàn vào button, khi click vào button sẽ lấy thông tin bàn từ tag , kiểu dữ liệu object nên cần ép kiểu về Table
+                btn.Tag = item;
 
                 switch (item.Status)
                 {
@@ -41,6 +44,27 @@ namespace QuanLyQuanCafe
 
                 flpTable.Controls.Add(btn);
             }
+        }
+
+        void ShowBill(int id)
+        {
+            lvsBill.Items.Clear();
+            List<BillInfo> listBillInfo = BillInfoDAO.Instance.getListBillInfo(BillDAO.Instance.GetUncheckBillIDByTableID(id));
+
+            foreach (BillInfo item in listBillInfo) 
+            {
+                ListViewItem lsvItem = new ListViewItem(item.IdFood.ToString());
+                lsvItem.SubItems.Add(item.Count.ToString());
+               
+                lvsBill.Items.Add(lsvItem);
+            }
+        }
+
+
+        private void btnTable_Click(object sender, EventArgs e)
+        {
+            int tableID = ((sender as Button).Tag as Table).ID;
+            ShowBill(tableID);
         }
 
         private void mnDiscount_ValueChanged(object sender, EventArgs e)

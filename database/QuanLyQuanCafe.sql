@@ -4,6 +4,14 @@ GO
 USE QuanlyQuanCafe
 GO
 
+
+DROP TABLE IF EXISTS BillInfo
+DROP TABLE IF EXISTS Bill
+DROP TABLE IF EXISTS Food
+DROP TABLE IF EXISTS FoodCategory
+DROP TABLE IF EXISTS tableFood
+DROP TABLE IF EXISTS Account
+
 --FOOD
 --TABLE
 --FOODCATEGORY
@@ -17,7 +25,7 @@ CREATE TABLE tableFood
 (
 	id int IDENTITY PRIMARY KEY,
 	name NVARCHAR(100) NOT NULL default N'undefined',
-	status NVARCHAR(100) default N'advilabel',  -- adviable || booked
+	status NVARCHAR(100) default N'Available',  -- adviable || booked
 )
 GO
 
@@ -77,3 +85,33 @@ CREATE TABLE BillInfo
 	FOREIGN KEY (idBill) REFERENCES dbo.Bill(id),
 	FOREIGN KEY (idFood) REFERENCES dbo.TableFood(id),
 )
+GO
+
+INSERT dbo.FoodCategory (name) VALUES (N'agricultural products')
+INSERT dbo.FoodCategory (name) VALUES (N'seafood')
+INSERT dbo.FoodCategory (name) VALUES (N'forest product')
+INSERT dbo.FoodCategory (name) VALUES (N'water')
+
+--- food
+INSERT dbo.Food (name, idCategory, price) VALUES (N'Sun-dried squid', 2, 120000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'hard clam', 2, 50000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'beef steak', 3, 320000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'fried rice', 1, 20000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'stir fried water spinach', 1, 120000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'7 up', 4, 10000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'string', 4, 15000)
+INSERT dbo.Food (name, idCategory, price) VALUES (N'coca', 4, 12000)
+
+----bill
+INSERT dbo.Bill (DateCheckIn, DateCheckOut, idTable, status) VALUES (GETDATE(), GETDATE(),2, 0)
+INSERT dbo.Bill (DateCheckIn, DateCheckOut, idTable, status) VALUES (GETDATE(), NULL,2, 0)
+INSERT dbo.Bill (DateCheckIn, DateCheckOut, idTable, status) VALUES (GETDATE(), GETDATE(),2, 1)
+
+---BILL INFO
+
+
+
+SELECT * FROM	dbo.Bill
+SELECT * FROM dbo.BillInfo
+SELECT * FROM dbo.Food
+SELECT * FROM dbo.FoodCategory

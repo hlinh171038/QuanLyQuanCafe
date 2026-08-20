@@ -48,6 +48,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,14 +67,14 @@
             this.personalInformaionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
@@ -82,7 +84,7 @@
             this.personalInfoToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.personalInformaionToolStripMenuItem.Name = "personalInformaionToolStripMenuItem";
-            this.personalInformaionToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
+            this.personalInformaionToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.personalInformaionToolStripMenuItem.Text = "Personal Informaion";
             // 
             // personalInfoToolStripMenuItem
@@ -125,12 +127,17 @@
             // 
             // lvsBill
             // 
+            this.lvsBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvsBill.GridLines = true;
             this.lvsBill.HideSelection = false;
             this.lvsBill.Location = new System.Drawing.Point(4, 29);
             this.lvsBill.Name = "lvsBill";
             this.lvsBill.Size = new System.Drawing.Size(359, 264);
             this.lvsBill.TabIndex = 0;
             this.lvsBill.UseCompatibleStateImageBehavior = false;
+            this.lvsBill.View = System.Windows.Forms.View.Details;
             // 
             // panel3
             // 
@@ -244,6 +251,14 @@
             this.btnCheckout.Text = "Check out";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID FOOD";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "COUNT";
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -292,5 +307,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbxSwitchTable;
         private System.Windows.Forms.NumericUpDown mnDiscount;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
